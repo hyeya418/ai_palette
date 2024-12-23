@@ -1,0 +1,21 @@
+# Python 관련
+*.pyc
+__pycache__/
+
+# 환경 설정 파일
+.env
+
+# Django 관련
+*.sqlite3
+db.sqlite3
+/media/
+/staticfiles/
+
+# IDE 관련
+.vscode/
+.idea/
+*.swp
+
+# 운영 환경 파일
+*.log
+*.pid

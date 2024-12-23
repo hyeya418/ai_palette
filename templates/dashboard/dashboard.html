@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 서비스 대시보드</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <script defer src="{% static 'js/dashboard.js' %}"></script>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li class="logo">
+                    <a href="/">
+                        🎨 AI Palette
+                        <!-- <img src="{% static 'images/logo.png' %}" alt="AI Palette Logo"> -->
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                {% for item in menu_items %}
+                <li data-content="{{ item.id }}" class="menu-item {% if forloop.first %}active{% endif %}">{{ item.name }}</li>
+                {% endfor %}
+            </ul>
+        </aside>
+        
+        <main class="content">
+            {% for item in menu_items %}
+            <div id="{{ item.id }}" class="content-section {% if forloop.first %}active{% endif %}">
+                <h1>{{ item.name }}</h1>
+                <p>여기는 {{ item.name }} 화면입니다.</p>
+            </div>
+            {% endfor %}
+        </main>
+        
+    </div>
+</body>
+</html>

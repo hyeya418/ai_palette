@@ -3,4 +3,6 @@ from .models import AIService
 
 @admin.register(AIService)
 class AIServiceAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description', 'icon', 'url', 'created_at')
+    list_display = ('tagid', 'name', 'description', 'path', 'created_at')
+    search_fields = ('name', 'description')  # 검색 기능 추가
+    list_filter = ('created_at',)  # 필터 추가

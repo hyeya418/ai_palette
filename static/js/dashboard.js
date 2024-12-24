@@ -1,19 +1,10 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const menuItems = document.querySelectorAll(".menu-item");
-    const contentSections = document.querySelectorAll(".content-section");
+document.addEventListener("DOMContentLoaded", function () {
+    const currentPath = window.location.pathname; // 현재 URL 경로
+    const menuItems = document.querySelectorAll(".menu-item a");
 
-    menuItems.forEach(item => {
-        item.addEventListener("click", () => {
-            // 모든 메뉴에서 active 클래스 제거
-            menuItems.forEach(i => i.classList.remove("active"));
-            // 클릭된 메뉴에 active 클래스 추가
-            item.classList.add("active");
-
-            // 모든 콘텐츠 섹션 숨기기
-            contentSections.forEach(section => section.classList.remove("active"));
-            // 클릭된 메뉴와 연결된 섹션만 보이도록 설정
-            const contentId = item.getAttribute("data-content");
-            document.getElementById(contentId).classList.add("active");
-        });
+    menuItems.forEach((menu) => {
+        if (menu.getAttribute("href") === currentPath) {
+            menu.parentElement.classList.add("active"); // 해당 <li> 활성화
+        }
     });
 });

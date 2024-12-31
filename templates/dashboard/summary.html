@@ -6,18 +6,60 @@
 <div class="main-container">
     <div class="content">
         <header class="content-header">
-            <h4>AI 완벽 요약</h4>
+            <h4 class="title">AI 완벽 요약</h4>
             <p class="intro-text">유튜브 영상, 웹사이트, 문서, 긴 글을 제한 없이 완벽하게 요약해 드려요.</p>
+            <div class="content-options">
+    <button class="option active" data-tab="tab-1">유튜브</button>
+    <button class="option" data-tab="tab-2">문서</button>
+    <button class="option" data-tab="tab-3">웹사이트</button>
+    <button class="option" data-tab="tab-4">텍스트</button>
+            </div>
         </header>
-        <section class="summary-body">
+        <section id="tab-1" class="summary-body active">
             <div class="summary-form">
                 <form>
-                    <input type="text" placeholder="요약하고 싶은 링크를 입력하세요" />
+                    <input type="text" placeholder="유튜브 링크를 입력하세요" />
                     <button type="submit">완벽 요약</button>
                 </form>
             </div>
             <div class="summary-results">
-                <p>요약된 내용이 이곳에 표시됩니다.</p>
+                <p>유튜브 요약 결과가 이곳에 표시됩니다.</p>
+            </div>
+        </section>
+        
+        <section id="tab-2" class="summary-body">
+            <div class="summary-form">
+                <form>
+                    <input type="file" />
+                    <button type="submit">완벽 요약</button>
+                </form>
+            </div>
+            <div class="summary-results">
+                <p>문서 요약 결과가 이곳에 표시됩니다.</p>
+            </div>
+        </section>
+        
+        <section id="tab-3" class="summary-body">
+            <div class="summary-form">
+                <form>
+                    <input type="text" placeholder="웹사이트 URL을 입력하세요" />
+                    <button type="submit">완벽 요약</button>
+                </form>
+            </div>
+            <div class="summary-results">
+                <p>웹사이트 요약 결과가 이곳에 표시됩니다.</p>
+            </div>
+        </section>
+        
+        <section id="tab-4" class="summary-body">
+            <div class="summary-form">
+                <form>
+                    <textarea placeholder="텍스트를 입력하세요"></textarea>
+                    <button type="submit">완벽 요약</button>
+                </form>
+            </div>
+            <div class="summary-results">
+                <p>텍스트 요약 결과가 이곳에 표시됩니다.</p>
             </div>
         </section>
     </div>

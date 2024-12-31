@@ -3,8 +3,23 @@
 {% block title %}완벽 요약{% endblock %}
 
 {% block content %}
-<div>
-    <h2>완벽 요약</h2>
-    <p>여기는 완벽 요약 페이지입니다.</p>
+<div class="main-container">
+    <div class="content">
+        <header class="content-header">
+            <h4>AI 완벽 요약</h4>
+            <p class="intro-text">유튜브 영상, 웹사이트, 문서, 긴 글을 제한 없이 완벽하게 요약해 드려요.</p>
+        </header>
+        <section class="summary-body">
+            <div class="summary-form">
+                <form>
+                    <input type="text" placeholder="요약하고 싶은 링크를 입력하세요" />
+                    <button type="submit">완벽 요약</button>
+                </form>
+            </div>
+            <div class="summary-results">
+                <p>요약된 내용이 이곳에 표시됩니다.</p>
+            </div>
+        </section>
+    </div>
 </div>
 {% endblock %}

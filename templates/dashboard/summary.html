@@ -3,6 +3,7 @@
 {% block title %}완벽 요약{% endblock %}
 
 {% block content %}
+{% csrf_token %}
 <div class="main-container">
     <div class="content">
         <header class="content-header">
@@ -30,8 +31,8 @@
         <section id="tab-2" class="summary-body">
             <div class="summary-form">
                 <form>
-                    <input type="file" />
-                    <button type="submit">완벽 요약</button>
+                    <input type="file" id="file"/>
+                    <button type="submit" id="summary-btn-2">완벽 요약</button>
                 </form>
             </div>
             <div class="summary-results">
@@ -64,4 +65,73 @@
         </section>
     </div>
 </div>
+
+<script>
+    document.getElementById('summary-btn-2').addEventListener('click', async function() {
+        event.preventDefault(); // 기본 폼 제출 방지
+        showLoading(); // 로딩 애니메이션 시작
+
+            // 선택된 파일이 없는 경우 경고 메시지를 표시하고 종료
+            if (!$("#file").val()) {
+                alert("업로드할 파일을 선택하세요.");
+                hideLoading(); // 로딩 애니메이션 종료
+                return; // 서버 요청을 중단
+            }
+    
+            const formData = new FormData();
+            // 문서번호 forData에 삽입(임시)
+            formData.append('doc_no', 1);
+            // 파일 formData에 삽입
+            const file = document.getElementById('file').files[0];
+            formData.append('file', file);
+    
+            fetch("{% url 'upload_files' %}", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Response data:", data);
+                if (data.success) {
+                    console.log("파일 업로드 성공!");
+
+                    fetch("{% url 'initiate_vectorization' %}", {
+                        method: "POST",
+                        body: formData,
+                        headers: {
+                            'X-CSRFToken': '{{ csrf_token }}'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log("파일 벡터화 성공!");
+
+                            //doc_no으로 vector파일 조회해서 langchain으로 요청하기
+                            //응답data 화면에 뿌려주기
+
+
+                        } else {
+                            alert("파일 벡터화 중 오류가 발생했습니다.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("파일 벡터화 중 오류:", error);
+                    })
+
+                } else {
+                    alert("파일 업로드 중 오류가 발생했습니다.");
+                }
+            })
+            .catch(error => {
+                console.error("파일 업로드 중 오류:", error);
+            })
+            .finally(() => {
+                hideLoading(); // 로딩 애니메이션 종료
+            });
+    });
+</script>
 {% endblock %}

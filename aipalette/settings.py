@@ -11,6 +11,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default-secret-key')
 
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '')
+NAVER_CLIENT_ID = os.getenv("NAVER_CLIENT_ID", "") 
+NAVER_CLIENT_SECRET = os.getenv("NAVER_CLIENT_SECRET", "")
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "")
+GOOGLE_CUSTOM_SEARCH_CX = os.getenv("GOOGLE_CUSTOM_SEARCH_CX", "")
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
 
@@ -58,6 +65,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'aipalette.wsgi.application'
 
 # Database
+# mySql연동 예정
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

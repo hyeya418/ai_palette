@@ -7,6 +7,9 @@
     <title>AI Palette</title>
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     <script defer src="{% static 'js/dashboard.js' %}"></script>
+    <script src="{% static 'js/common.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 </head>
 <body>
     <nav class="sidebar">
@@ -33,5 +36,8 @@
         <!-- 메인 콘텐츠는 개별 템플릿에서 제공 -->
         {% endblock %}
     </main>
+    <div id="loading-overlay">
+        <img src="/static/images/loading.gif" alt="Loading...">
+    </div>
 </body>
 </html>

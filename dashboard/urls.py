@@ -8,4 +8,9 @@ urlpatterns = [
     path('services/presentation-script/', views.presentation_script_view, name='presentation-script'),
     path('services/interview-prep/', views.interview_prep_view, name='interview-prep'),
     path('services/pdf-chatbot/', views.pdf_chatbot_view, name='pdf-chatbot'),
+    
+    path('upload-files/', views.upload_files, name='upload_files'),
+    path('vectorize/', views.initiate_vectorization, name='initiate_vectorization'),
+
+
 ]
